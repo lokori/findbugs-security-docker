@@ -13,3 +13,11 @@ docker pull lokori/findbugs-sec
 docker run  -v `pwd`:/workdir/src lokori/findbugs-sec src
 ```
 
+To get a HTML report in your current working directory out of the Docker container you could try this:
+```
+ docker run -v `pwd`:/workdir/src lokori/findbugs-security-docker -html -output /workdir/src/findsec-report.html src
+```
+
+Docker volume mount lets the container output the file for you.
+
+ 
