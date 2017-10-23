@@ -1,5 +1,6 @@
 FROM java:8-jdk-alpine
 ENV FINDBUGS_VERSION=3.0.1
+ENV FINDSECBUGS_PLUGIN_VERSION=1.7.1
 
 WORKDIR /usr/workdir
 RUN apk add --update \
@@ -11,7 +12,7 @@ RUN curl -sL \
     tar -xz  && \
     mv findbugs-* /usr/bin/findbugs
 
-RUN curl -o /usr/bin/findbugs/lib/findsecbugs-plugin.jar -sL "https://search.maven.org/remotecontent?filepath=com/h3xstream/findsecbugs/findsecbugs-plugin/1.7.1/findsecbugs-plugin-1.7.1.jar"
+RUN curl -o /usr/bin/findbugs/lib/findsecbugs-plugin.jar -sL "https://search.maven.org/remotecontent?filepath=com/h3xstream/findsecbugs/findsecbugs-plugin/${FINDSECBUGS_PLUGIN_VERSION}/findsecbugs-plugin-${FINDSECBUGS_PLUGIN_VERSION}.jar"
 
 WORKDIR /workdir
 
