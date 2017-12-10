@@ -22,7 +22,12 @@ To get a HTML report in your current working directory out of the Docker contain
  docker run --rm -v `pwd`:/workdir/src lokori/findbugs-sec -html -output /workdir/src/findsec-report.html src
 ```
 
-A more comprehensive example. -u option is used to maintain proper file ownership when the container writes the files as host machine has different users.
+Or put some more options, with respect to your preferences. This is my current default:
+```
+docker run --rm -v `pwd`:/workdir/src lokori/findbugs-sec -html:fancy-hist.xsl -effort:max -relaxed  -output /workdir/src/findsec-report.html src
+```
+
+Third example. -u option is used to maintain proper file ownership when the container writes the files as host machine has different users.
 
 ```
 docker run --rm -u 498:497 -v `pwd`:/workdir/src lokori/findbugs-sec -nested:false -onlyAnalyze fi.solita.- -html -output /workdir/src/findsec-report.html src/awesome-api-0.0.1-SNAPSHOT.jar
